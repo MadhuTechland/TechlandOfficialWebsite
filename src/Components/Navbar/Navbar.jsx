@@ -44,7 +44,7 @@ const Navbar = () => {
             <ul id="nav" className={`navbar-nav ms-auto ${isMenuOpen ? 'open' : ''}`}>
               <li className="nav-item" onClick={() => setscrolltoTop(prev => !prev)}>
                 <NavLink className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")} to="/">
-                  Home food
+                  Home 
                 </NavLink>
               </li>
               <li className="nav-item" onClick={() => setscrolltoTop(prev => !prev)}>
@@ -99,7 +99,7 @@ const Navbar = () => {
                       ></path>
                     </svg>
                   </span>
-                  Get a Quote with harry
+                  Get a Quote
                 </button>
               </li>
             </ul>
