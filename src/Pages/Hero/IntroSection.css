@@ -1,0 +1,351 @@
+.intro-section {
+
+  color: #ffffff;
+  font-weight: 600;
+  padding: 50px 0px;
+  padding-left: 50px;
+}
+
+.intro-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+
+.intro-content {
+  width: 50%;
+  padding: 20px;
+}
+
+.intro-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.intro-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.intro-services {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.intro-services li {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.intro-button {
+  display: inline-block;
+  padding: 12px 20px;
+  font-size: 1rem;
+  color: #0f172a;
+  background-color: #ffca28;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.intro-button:hover {
+  background-color: #ffc107;
+  transform: scale(1.05);
+}
+
+.intro-images {
+  flex: 1 2;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.intro-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.morphing-box {
+  border-color: #6d7aff;
+  border-width: 2px;
+  border-style: solid;
+  background-color: snow;
+  width: 500px;
+  height: 500px;
+  border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
+  will-change: border-radius, transform, opacity;
+  animation: heroMorph 5s linear infinite;
+  overflow: hidden;
+  position: relative;
+}
+
+/* The image inside the morphing box */
+.morphing-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Ensure the image covers the box */
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: scaleimg 5s linear infinite;
+}
+
+@keyframes scaleimg {
+  0% {
+    transform: scale(1);
+    background-color: #ffc4fb;
+  }
+
+
+  50% {
+    transform: scale(1.25);
+    background-color: #aeccff;
+
+  }
+
+
+
+  100% {
+    transform: scale(1);
+    background-color: #ffc4fb;
+  }
+
+}
+
+/* Keyframes for border-radius animation */
+@keyframes heroMorph {
+  0% {
+    border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
+    border-color: #6d7aff;
+  }
+
+  25% {
+    border-radius: 80% 30% 50% 20% / 50% 70% 60% 40%;
+    border-color: #6d7aff;
+  }
+
+  50% {
+    border-radius: 40% 60% 20% 80% / 60% 30% 70% 50%;
+    border-color: #f300e3;
+  }
+
+  75% {
+    border-radius: 70% 55% 40% 60% / 40% 80% 30% 50%;
+    border-color: #6d7aff;
+  }
+
+  100% {
+    border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
+    border-color: #6d7aff;
+  }
+}
+
+.intro-container button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.intro-container button.intro-learn-more {
+  width: 12rem;
+  height: auto;
+}
+
+.intro-container button.intro-learn-more .intro-circle {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  box-shadow: 0 0 5px 1px white;
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  background: #0c0b76;
+  border-radius: 1.625rem;
+}
+
+.intro-container button.intro-learn-more .intro-circle .intro-icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: #fff;
+}
+
+.intro-container button.intro-learn-more .intro-circle .intro-icon.intro-arrow {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  left: 0.625rem;
+  width: 1.125rem;
+  height: 0.125rem;
+  background: none;
+}
+
+.intro-container button.intro-learn-more .intro-circle .intro-icon.intro-arrow::before {
+  position: absolute;
+  content: "";
+  top: -0.29rem;
+  right: 0.0625rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-top: 0.125rem solid #fff;
+  border-right: 0.125rem solid #fff;
+  transform: rotate(45deg);
+}
+
+.intro-container button.intro-learn-more .intro-button-text {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 0;
+  margin: 0 0 0 3.5rem;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: justify;
+  /* text-transform: uppercase; */
+}
+
+.intro-container button:hover .intro-circle {
+  width: 100%;
+  box-shadow: 0 0 10px 2px white;
+}
+
+.intro-container button:hover .intro-button-text {
+  transform: translate(-1.7rem, 0);
+}
+
+.intro-container button:hover .intro-circle .intro-icon.intro-arrow {
+  background: #fff;
+  transform: translate(9.5rem, 0);
+}
+
+.intro-container button:active .intro-circle .intro-icon.intro-arrow {
+  transform: translate(9.5rem, 0);
+  transition: all 0.3s;
+}
+
+.intro-container button:active .intro-circle {
+  transform: scale(0.9);
+  transition: all 0.3s;
+  box-shadow: 0 0 5px 0.5px white;
+}
+
+.intro-container button:hover .intro-button-text {
+  color: #fff;
+}
+
+.intro-container button:active .intro-button-text {
+  color: rgba(255, 255, 255, 0.459);
+}
+
+@media (max-width: 1200px) {
+  /* */
+
+
+
+  .intro-title {
+    font-size: 2rem;
+  }
+
+
+
+  .intro-video {
+    width: 80%;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro-section {
+    padding: 20px 10px;
+  }
+
+  .intro-content {
+    width: 100%;
+    padding: 30px;
+  }
+
+  .intro-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .intro-title {
+    font-size: 1.5rem;
+  }
+
+
+  .intro-services li {
+    font-size: 0.9rem;
+  }
+
+  .intro-video {
+    max-width: 100%;
+    margin-top: 20px;
+  }
+
+  .intro-button {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-title {
+    font-size: 1.2rem;
+  }
+
+  .intro-content {
+    text-align: center;
+    padding: 25px;
+  }
+
+  .intro-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+  .intro-services li {
+    font-size: 0.8rem;
+  }
+
+  .intro-video {
+    max-width: 100%;
+    margin-top: 20px;
+  }
+
+  .intro-button {
+    font-size: 0.8rem;
+    padding: 10px 18px;
+  }
+
+}

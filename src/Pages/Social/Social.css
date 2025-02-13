@@ -1,0 +1,82 @@
+.socialredes {
+
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+
+
+
+.socialredes a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 55px;
+    transition: all 0.2s ease-in-out;
+}
+
+.socialredes a svg {
+    width: 30px;
+    fill: #ffffff;
+}
+
+.socialredes .socialinsta {
+    background-color: #d62976;
+    border-radius: 0 0 10px 0;
+}
+
+.socialredes .sociallinkedin {
+    background: linear-gradient(45deg, #015d8f, #0072b1, #0183c9);
+    border-radius: 0 10px 0 0;
+}
+
+.socialredes .socialgithub {
+    background-color: rgb(24, 22, 22);
+}
+
+.socialredes .socialtwitter {
+    background-color: #000000;
+}
+
+.socialredes .socialwhatsapp {
+    background-color: #25d366;
+}
+
+.socialredes .socialphone {
+    background-color: #047bc1;
+}
+
+.socialredes a:hover {
+    width: 98px;
+    border-radius: 0 10px 10px 0;
+}
+
+@media (max-width: 768px) {
+
+    .socialredes a {
+        width: 35px;
+    }
+
+    .socialredes a svg {
+        width: 25px;
+    }
+
+
+
+    .socialredes a:hover {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .socialredes a svg {
+        width: 20px;
+    }
+}
