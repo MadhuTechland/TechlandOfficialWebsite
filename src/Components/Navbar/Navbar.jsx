@@ -44,12 +44,12 @@ const Navbar = () => {
             <ul id="nav" className={`navbar-nav ms-auto ${isMenuOpen ? 'open' : ''}`}>
               <li className="nav-item" onClick={() => setscrolltoTop(prev => !prev)}>
                 <NavLink className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")} to="/">
-                  Home
+                  Home food
                 </NavLink>
               </li>
               <li className="nav-item" onClick={() => setscrolltoTop(prev => !prev)}>
                 <NavLink className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")} to="/about">
-                  About us
+                  About us 
                 </NavLink>
               </li>
               <li className="nav-item" onClick={() => setscrolltoTop(prev => !prev)}>
