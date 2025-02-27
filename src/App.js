@@ -12,6 +12,8 @@ import AboutUs from "./Pages/About/AboutMain";
 import DetailedServices from "./Pages/Services/DetailedServices";
 import Portfolio from "./Pages/Projects/Portfolio";
 import ScrollToTopButton from "./Components/Navbar/ScrollToTopButton";
+import WebAllProjects from "./Pages/Projects/WebAllProjects";
+
 
 // import Portfolio from "./Pages/Portfolio/";
 // import Pricing from "./Pages/Pricing/";
@@ -51,6 +53,8 @@ const App = () => {
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/team" element={<><OurTeam /><TeamBlogs /></>} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/projects/:category" element={<WebAllProjects />} />
+          
 
           {/* <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/pricing" element={<Pricing />} />
