@@ -1,0 +1,114 @@
+/* General Styles */
+.project-description-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .back-btn {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .project-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .project-header h1 {
+    font-size: 2rem;
+  }
+  
+  .client-name {
+    font-size: 1.2rem;
+    color: #777;
+  }
+  
+  /* Responsive Layout */
+  .project-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .image-section {
+    text-align: center;
+  }
+  
+  .project-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Details Section */
+  .details-section {
+    padding: 15px;
+  }
+  
+  .description {
+    font-size: 1.2rem;
+  }
+  
+  .more-description {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  .project-meta p {
+    margin: 5px 0;
+  }
+  
+  .tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .tech-badge {
+    background: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+  }
+  
+  /* View Project Button */
+  .view-project-btn {
+    display: block;
+    background: #28a745;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+  
+  .view-project-btn:hover {
+    background: #218838;
+  }
+  
+  /* Responsive Design */
+  @media (min-width: 768px) {
+    .project-content {
+      flex-direction: row;
+      align-items: center;
+    }
+  
+    .image-section {
+      flex: 1;
+    }
+  
+    .details-section {
+      flex: 2;
+    }
+  }
+  

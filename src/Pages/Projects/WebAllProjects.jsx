@@ -5,37 +5,37 @@ import "./ProjectList.css";
 const WebAllProjects = () => {
   const location = useLocation();
   const navigate = useNavigate();
-
-  // Ensure projects data is available
   const { projects } = location.state || { projects: [] };
 
-  // Redirect to homepage if projects data is missing
   useEffect(() => {
     if (!projects.length) {
       navigate("/");
     }
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 500); 
+    
   }, [projects, navigate]);
 
-  // Initialize active image index for carousel
+  
+
   const [activeImageIndices, setActiveImageIndices] = useState(
-    projects.reduce((acc, project, index) => {
-      acc[index] = 0; // Default to first image
+    projects.reduce((acc, _, index) => {
+      acc[index] = 0;
       return acc;
     }, {})
   );
 
-  // Handle Next Image in Carousel
   const goToNextImage = (index) => {
-    if (!projects[index].images || projects[index].images.length === 0) return; // Check if images exist
+    if (!projects[index].images || projects[index].images.length === 0) return;
     setActiveImageIndices((prev) => ({
       ...prev,
       [index]: (prev[index] + 1) % projects[index].images.length,
     }));
   };
 
-  // Handle Previous Image in Carousel
   const goToPrevImage = (index) => {
-    if (!projects[index].images || projects[index].images.length === 0) return; // Check if images exist
+    if (!projects[index].images || projects[index].images.length === 0) return;
     setActiveImageIndices((prev) => ({
       ...prev,
       [index]: (prev[index] - 1 + projects[index].images.length) % projects[index].images.length,
@@ -51,7 +51,7 @@ const WebAllProjects = () => {
           <div key={index} className={`project-item ${index % 2 === 0 ? "" : "reversed"}`}>
             
             {/* Image Carousel Section */}
-            <div className={`project-image-wrapper mobile  `}>
+            <div className="project-image-wrapper mobile">
               {project.images && project.images.length > 1 && (
                 <button className="carousel-btn prev" onClick={() => goToPrevImage(index)}>
                   &#8592;
@@ -74,18 +74,30 @@ const WebAllProjects = () => {
             <div className="project-info-wrapper mobile">
               <h3>{project.title}</h3>
               <p>{project.description}</p>
-              {project.links && (
-                <button className="view-project-btn">
-                  <a
-                    style={{ all: "unset" }}
-                    href={project.links[activeImageIndices[index]]}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    View Project
-                  </a>
+
+              <div className="button-container">
+                {/* View Project Button */}
+                {project.links && (
+                  <button className="view-project-btn">
+                    <a
+                      style={{ all: "unset" }}
+                      href={project.links[activeImageIndices[index]]}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      View Project
+                    </a>
+                  </button> 
+                )}
+
+                {/* View Project Description Button */}
+                <button
+                  className="view-project-btn"
+                  onClick={() => navigate(`/project-description/${index}`, { state: { project } })}
+                >
+                  View Project Description
                 </button>
-              )}
+              </div>
             </div>
           </div>
         ))}

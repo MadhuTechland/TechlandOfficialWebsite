@@ -133,6 +133,30 @@
     border-radius: 3px;
 }
 
+.button-container {
+  display: flex;
+  gap: 10px;
+}
+
+.view-project-btn, .view-description-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.view-description-btn {
+  background-color: #28a745;
+}
+
+.view-project-btn:hover, .view-description-btn:hover {
+  opacity: 0.8;
+}
+
+
 /* @media (max-width: 768px) {
     .project-title {
         font-size: 2rem;

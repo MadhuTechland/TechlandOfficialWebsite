@@ -13,6 +13,7 @@ import DetailedServices from "./Pages/Services/DetailedServices";
 import Portfolio from "./Pages/Projects/Portfolio";
 import ScrollToTopButton from "./Components/Navbar/ScrollToTopButton";
 import WebAllProjects from "./Pages/Projects/WebAllProjects";
+import ProjectDescription from "./Pages/Projects/ProjectDescription";
 
 
 // import Portfolio from "./Pages/Portfolio/";
@@ -54,7 +55,7 @@ const App = () => {
           <Route path="/team" element={<><OurTeam /><TeamBlogs /></>} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/projects/:category" element={<WebAllProjects />} />
-          
+          <Route path="/project-description/:id" element={<ProjectDescription />} />          
 
           {/* <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/pricing" element={<Pricing />} />
