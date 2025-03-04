@@ -1,11 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.6677b7e6.css",
-    "main.js": "/static/js/main.d66b1d11.js",
+    "main.css": "/static/css/main.8b97ea7c.css",
+    "main.js": "/static/js/main.7ff6730a.js",
     "static/js/453.d4332847.chunk.js": "/static/js/453.d4332847.chunk.js",
+    "static/media/primepantry.png": "/static/media/primepantry.b8849ae3c086f4a1872d.png",
     "static/media/templecity.png": "/static/media/templecity.e55879454fcb744d0002.png",
     "static/media/varaprasadimg.png": "/static/media/varaprasadimg.caa9feddd057367d2063.png",
     "static/media/sapid.png": "/static/media/sapid.9221f51179a616412513.png",
+    "static/media/bigbagImage.png": "/static/media/bigbagImage.b17587e52a651f0d46f3.png",
     "static/media/meato.png": "/static/media/meato.f378c8274cf094d08b69.png",
     "static/media/templecityweb.png": "/static/media/templecityweb.cad5c399dfb48a2f4b03.png",
     "static/media/web-developer-animation.mp4": "/static/media/web-developer-animation.c7a78e5a543dc68bb586.mp4",
@@ -14,12 +16,14 @@
     "static/media/nudealweb.png": "/static/media/nudealweb.cc727123e9c3cb90fc00.png",
     "static/media/wedding.jpg": "/static/media/wedding.a33c1e453ef9055078ac.jpg",
     "static/media/abhisreeweb.png": "/static/media/abhisreeweb.0d1a4435c89464972f92.png",
+    "static/media/activeItzoneImage.png": "/static/media/activeItzoneImage.147f5a2540e3a2808c4f.png",
     "static/media/madhuimg.png": "/static/media/madhuimg.b149913ecf9412297b75.png",
     "static/media/Meato.png": "/static/media/Meato.a4c0b96747018aea8817.png",
     "static/media/workoasisweb.png": "/static/media/workoasisweb.291ec0f7b0b4322d077c.png",
     "static/media/digital-marketing.png": "/static/media/digital-marketing.a1a92f4e8fe58b9194db.png",
     "static/media/cashexweb.png": "/static/media/cashexweb.b364c271589aac8fbeb6.png",
     "static/media/mission.mp4": "/static/media/mission.05b57f40513416932898.mp4",
+    "static/media/bullionImage.png": "/static/media/bullionImage.6b7c025cd64865d88a8b.png",
     "static/media/cashexbiteboxweb.png": "/static/media/cashexbiteboxweb.cacf65d4a6a33c09a1b1.png",
     "static/media/meatoweb.jpeg": "/static/media/meatoweb.8effc04a1491fb971394.jpeg",
     "static/media/Car Rental.png": "/static/media/Car Rental.eba9d63b2ffd50bb904f.png",
@@ -43,12 +47,12 @@
     "static/media/outin.png": "/static/media/outin.a73f6e6da9cf5b40b350.png",
     "static/media/workoasis.webp": "/static/media/workoasis.24f99c2cd4f6c99eafbf.webp",
     "index.html": "/index.html",
-    "main.6677b7e6.css.map": "/static/css/main.6677b7e6.css.map",
-    "main.d66b1d11.js.map": "/static/js/main.d66b1d11.js.map",
+    "main.8b97ea7c.css.map": "/static/css/main.8b97ea7c.css.map",
+    "main.7ff6730a.js.map": "/static/js/main.7ff6730a.js.map",
     "453.d4332847.chunk.js.map": "/static/js/453.d4332847.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6677b7e6.css",
-    "static/js/main.d66b1d11.js"
+    "static/css/main.8b97ea7c.css",
+    "static/js/main.7ff6730a.js"
   ]
 }

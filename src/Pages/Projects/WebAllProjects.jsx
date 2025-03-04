@@ -1,113 +1,86 @@
-import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import "./ProjectList.css";
+import React, { useEffect } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
+import './ProjectList.css';
+import { categories } from "./Accordion";
+
 
 const WebAllProjects = () => {
+  useEffect(() => {
+    document.body.scrollTo({ top: 0, behavior: "smooth" });
+  }, [])
   const location = useLocation();
   const navigate = useNavigate();
-  const { projects } = location.state || { projects: [] };
+  const param = useParams()
 
-  useEffect(() => {
-    if (!projects.length) {
-      navigate("/");
-    }
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 500); 
-    
-  }, [projects, navigate]);
+  const projects = location?.state?.projects || categories?.[param.category] || {};
+  const categoryName = location?.state?.categoryName || param?.category || {};
 
-  
-
-  const [activeImageIndices, setActiveImageIndices] = useState(
-    projects.reduce((acc, _, index) => {
-      acc[index] = 0;
-      return acc;
-    }, {})
-  );
-
-  const goToNextImage = (index) => {
-    if (!projects[index].images || projects[index].images.length === 0) return;
-    setActiveImageIndices((prev) => ({
-      ...prev,
-      [index]: (prev[index] + 1) % projects[index].images.length,
-    }));
+  // Function to format date
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'short' };
+    return new Date(dateString).toLocaleDateString('en-US', options);
   };
-
-  const goToPrevImage = (index) => {
-    if (!projects[index].images || projects[index].images.length === 0) return;
-    setActiveImageIndices((prev) => ({
-      ...prev,
-      [index]: (prev[index] - 1 + projects[index].images.length) % projects[index].images.length,
-    }));
+  const handleView = (project) => {
+    navigate(`/portfolio/${categoryName}/${project.id}`, { state: { project, categoryName }, });
   };
-
   return (
-    <div className="main-container">
-      <h2 align="center">📌 More Projects</h2>
+    <div className="allproproject-gallery">
+      <div className="allprogallery-header">
+        <h1 className="allprogallery-title">{categoryName || "Project Showcase"}</h1>
+        <p className="allprogallery-subtitle">
+          Explore my collection of projects showcasing various technologies and creative solutions
+        </p>
+      </div>
 
-      <div className="project-items">
-        {projects.map((project, index) => (
-          <div key={index} className={`project-item ${index % 2 === 0 ? "" : "reversed"}`}>
-            
-            {/* Image Carousel Section */}
-            <div className="project-image-wrapper mobile">
-              {project.images && project.images.length > 1 && (
-                <button className="carousel-btn prev" onClick={() => goToPrevImage(index)}>
-                  &#8592;
-                </button>
-              )}
-
+      <div className="allproproject-grid">
+        {projects.map((project) => (
+          <div key={project.id} className="allproproject-card">
+            <div className="allproproject-image-wrapper">
               <img
-                src={project.images && project.images.length > 0 ? project.images[activeImageIndices[index]] : project.img}
+                src={project.image}
                 alt={project.title}
+                className="allproproject-image"
               />
-
-              {project.images && project.images.length > 1 && (
-                <button className="carousel-btn next" onClick={() => goToNextImage(index)}>
-                  &#8594;
-                </button>
-              )}
             </div>
 
-            {/* Project Info Section */}
-            <div className="project-info-wrapper mobile">
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
+            <div className="allproproject-content">
+              <h3 className="allproproject-title">{project.title}</h3>
+              <p className="allproproject-description">{project.description}</p>
 
-              <div className="button-container">
-                {/* View Project Button */}
-                {project.links && (
-                  <button className="view-project-btn">
-                    <a
-                      style={{ all: "unset" }}
-                      href={project.links[activeImageIndices[index]]}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      View Project
-                    </a>
-                  </button> 
-                )}
+              <div className="allprotech-tags">
+                {project.technologies_used.map((tech, index) => (
+                  <span key={index} className="allprotech-tag">
+                    {tech}
+                  </span>
+                ))}
+              </div>
 
-                {/* View Project Description Button */}
-                <button
-                  className="view-project-btn"
-                  onClick={() => navigate(`/project-description/${index}`, { state: { project } })}
+              <div className="allproproject-actions">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="allproview-project"
                 >
-                  View Project Description
-                </button>
+                  View Project <ArrowUpRight size={16} />
+                </a>
+                <div
+                  onClick={() => handleView(project)}
+                  className="allproview-project"
+                >
+                  View Details <ArrowUpRight size={16} />
+                </div>
+
+                {project.date && (
+                  <span className="allproproject-date">
+                    {formatDate(project.date)}
+                  </span>
+                )}
               </div>
             </div>
           </div>
         ))}
-      </div>
-
-      {/* Go Back Button */}
-      <div className="see-more-container">
-        <button className="see-more-btn" onClick={() => window.history.back()}>
-          ⬅ Go Back
-        </button>
       </div>
     </div>
   );

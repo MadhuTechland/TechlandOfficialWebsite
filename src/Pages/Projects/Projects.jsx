@@ -86,14 +86,14 @@ const Projects = () => {
     }, [scrollContent]);
 
     return (
-        <section className="project-section">
-            <div className="project-container">
-                <h2 className="project-title">Our Moblie Projects</h2>
-                <span className="project-subtitle">
+        <section className="home-project-section">
+            <div className="home-project-container">
+                <h2 className="home-project-title">Our Moblie Projects</h2>
+                <span className="home-project-subtitle">
                     We are proud to have partnered with exceptional clients across various industries.
                 </span>
                 <div
-                    className="project-grid"
+                    className="home-project-grid"
                     onMouseEnter={() => cancelAnimationFrame(animationFrameClients.current)}
                     onMouseLeave={() => (animationFrameClients.current = requestAnimationFrame(() =>
                         scrollContent(cardContainerRef, animationFrameClients, scrollAmountClients, scrollBackClients)))}
@@ -104,21 +104,21 @@ const Projects = () => {
                     ref={cardContainerRef}
                 >
                     {moblieProjects.map((client, index) => (
-                        <div key={index} className="project-card">
-                            <img src={client.logo} alt={client.name} className="project-logo-moblie" />
-                            <p className="project-name">{client.name}</p>
-                            <div className="mobileBtn"></div>
+                        <div key={index} className="home-project-card">
+                            <img src={client.logo} alt={client.name} className="home-project-logo-moblie" />
+                            <p className="home-project-name">{client.name}</p>
+                            <div className="home-mobileBtn"></div>
                         </div>
                     ))}
                 </div>
 
 
-                <h2 className="project-title">Our Website Projects</h2>
-                <span className="project-subtitle">
+                <h2 className="home-project-title">Our Website Projects</h2>
+                <span className="home-project-subtitle">
                     We are proud to have partnered with exceptional clients across various industries.
                 </span>
                 <div
-                    className="project-grid"
+                    className="home-project-grid"
                     onMouseEnter={() => cancelAnimationFrame(animationFrameTestimonials.current)}
                     onMouseLeave={() => (animationFrameTestimonials.current = requestAnimationFrame(() =>
                         scrollContent(testimonialContainerRef, animationFrameTestimonials, scrollAmountTestimonials, scrollBackTestimonials)))}
@@ -128,10 +128,10 @@ const Projects = () => {
                     ref={testimonialContainerRef}
                 >
                     {pcProjects.map((client, index) => (
-                        <div key={index} className="project-card">
-                            <img src={client.logo} alt={client.name} className="project-logo-pc" />
-                            <p className="project-name">{client.name}</p>
-                            <div className="pcStand"></div>
+                        <div key={index} className="home-project-card">
+                            <img src={client.logo} alt={client.name} className="home-project-logo-pc" />
+                            <p className="home-project-name">{client.name}</p>
+                            <div className="home-pcStand"></div>
                         </div>
                     ))}
                 </div>

@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ProjectList.css";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faShoppingCart, // E-Commerce
+  faUtensils,     // Food Delivery
+  faBriefcase,    // Job Search
+  faCoins,        // Financial
+  faHandHoldingHeart, // Non-Profit
+  faRing,         // Wedding Planning
+  faCarSide,          // Car Rental
+  faUsers,        // HR & Recruitment
+  faTruck,        // Delivery
+  faTools,        // General Utilities
+} from '@fortawesome/free-solid-svg-icons';
 // Import project images
 import abhisreeweb from "../../Components/Assets/Projectimg/abhisreeweb.png";
 import cashexbiteboxweb from "../../Components/Assets/Projectimg/cashexbiteboxweb.png";
@@ -11,406 +23,348 @@ import nudealweb from "../../Components/Assets/Projectimg/nudealweb.png";
 import templecityweb from "../../Components/Assets/Projectimg/templecityweb.png";
 import workoasisweb from "../../Components/Assets/Projectimg/workoasisweb.png";
 import nudeal from "../../Components/Assets/Projectimg/nudeal.png";
-import meato from "../../Components/Assets/Projectimg/meato.png";
+import primepantry from "../../Components/Assets/Projectimg/primepantry.png";
 import sapid from "../../Components/Assets/Projectimg/sapid.png";
 import templecity from "../../Components/Assets/Projectimg/templecity.png";
 import wedding from "../../Components/Assets/wedding.jpg";
 import help from "../../Components/Assets/help.png";
 import car from "../../Components/Assets/Car Rental.png";
 import Vaaree from "../../Components/Assets/vaare.png";
+import bigbagImage from "../../Components/Assets/Projectimg/bigbagImage.png";
+import activeItzoneImage from "../../Components/Assets/Projectimg/activeItzoneImage.png";
+import bullionImage from "../../Components/Assets/Projectimg/bullionImage.png";
 
 // Project Data for Different Categories
-const categories = [
-  {
-    "name": "Web Applications",
-    "data": [
-      {
-        "id": 1,
-        "img": abhisreeweb,
-        "title": "Abhisree Foundation",
-        "description": "A non-profit organization website dedicated to supporting social causes and initiatives.",
-        "more_description": "A non-profit organization website dedicated to supporting social causes and initiatives. The platform enables users to donate, volunteer, and stay updated on various charitable programs, ensuring transparency and impact-driven contributions.",
-        "links": ["https://abhisreefoundation.org/"],
-        "category": "Web",
-        "client_name": "abhisreefoundation",
-        "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
-        "duration": "45 days",
-        "status": "Live",
-        "team_size": 4
-      },
-      {
-        "id": 2,
-        "img": cashexbiteboxweb,
-        "title": "CashX",
-        "description": "A modern web platform for online food ordering and restaurant management.",
-        "more_description": "This project helps restaurants digitize their ordering process with real-time tracking and payment integration.",
-        "links": ["https://biteboxes.in/"],
-        "category": "web",
-        "client_name": "Cashex BiteBox",
-        "technologies_used": ["React", "Node.js", "MongoDB"],
-        "duration": "6 months",
-        "status": "In Development",
-        "team_size": 6
-      },
-      {
-        "id": 3,
-        "img": cashexweb,
-        "title": "CashX WEb",
-        "description": "A fintech web application for managing digital payments and transactions.",
-        "more_description": "A robust and scalable platform enabling businesses to manage transactions securely with multi-layer authentication.",
-        "links": [""],
-        "category": "fintech",
-        "client_name": "Cashex",
-        "technologies_used": ["Laravel", "Vue.js", "MySQL"],
-        "duration": "5 months",
-        "status": "Live",
-        "team_size": 5
-      },
-      {
-        "id": 4,
-        "img": meato,
-        "title": "MeatO",
-        "description": "An online food delivery service that connects users with local restaurants",
-        "more_description": "An online food delivery service that connects users with local restaurants, offering real-time order tracking, restaurant partnerships, and a hassle-free ordering experience. The platform supports multiple cuisines, easy payment options, and live customer support.",
-        "links": ["https://meato.co/"],
-        "category": "mobile",
-        "client_name": "MeatO PVT.LTD",
-        "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
-        "duration": " 1 months",
-        "status": "Live",
-        "team_size": 4
-      },
-      {
-        "id": 5,
-        "img": nudealweb,
-        "title": "Nudeal",
-        "description": "A fully integrated web-based shopping platform that offers advanced inventory and order management.",
-        "more_description": "This app allows users to book puja services, find temple information, and get personalized religious guidance.",
-        "links": ["https://nr12brandsshop.in/"],
-        "category": "WEb",
-        "client_name": "Nudeal ltb",
-        "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
-        "duration": "one months",
-        "status": "Live",
-        "team_size": 4
-      },
-      {
-        "id": 6,
-        "img": workoasisweb,
-        "title":"workoasis",
-        "description": "A job search platform that bridges the gap between job seekers and employers. ",
-        "more_description": " A job search platform that bridges the gap between job seekers and employers. It provides smart filters for job searches, resume-building tools, real-time job alerts, and a seamless application process for both candidates and recruiters.",
-        "links": ["https://workoasis.in/"],
-        "category": "mobile",
-        "client_name": "Temple City",
-        "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
-        "duration": "3 months",
-        "status": "Live",
-        "team_size": 4
-      },
-    ]
-  }
-,{
-      "name": "Mobile Applications",
-      "data": [
-        {
-          "id": 1,
-          "img": nudealweb,
-          "title": "Nudeal App",
-          "description": "This is a feature-rich mobile app.",
-          "links": ["https://play.google.com/store/apps/details?id=com.nudeal.user&pcampaignid=web_share"],
-          "more_description": "A fully functional mobile app designed to enhance user experience and productivity.",
-          "category": "mobile",
-          "client_name": "Nudeal Solutions",
-          "technologies_used": ["Flutter", "Firebase", "REST API"],
-          "duration": "4 months",
-          "status": "Live",
-          "team_size": 3
-        },
-        {
-          "id": 2,
-          "img": templecityweb,
-          "title": "Temple City",
-          "description": "An innovative Android application.",
-          "links": ["https://play.google.com/store/apps/details?id=com.templecity.pujari&pcampaignid=web_share"],
-          "more_description": "A customized Android solution built to serve unique business needs.",
-          "category": "mobile",
-          "client_name": "Temple City",
-          "technologies_used": ["Kotlin", "Node.js", "MongoDB"],
-          "duration": "5 months",
-          "status": "In Development",
-          "team_size": 4
-        },
-        {
-          "id": 3,
-          "img": wedding,
-          "img": wedding,
-          "title": "Wedding planer",
-          "description": "Wedding planning made simple with the WedMeGood App",
-          "more_description": "Wedding planning made simple with the WedMeGood App",
-          "links": ["https://play.google.com/store/apps/details?id=com.wedmegood.planner"],
-          "category": "mobile",
-          "client_name": "We plan your wed",
-          "technologies_used": ["Swift", "CoreData", "Firebase"],
-          "duration": "2 months",
-          "status": "Live",
-          "team_size": 5
-        },
-        {
-          "id": 4,
-          "img":help ,
-          "title": " Find Helpers",
-          "description": "A user-friendly mobile app for temple services and priest bookings.",
-          "more_description": "This app allows users to book puja services, find temple information, and get personalized religious guidance.",
-          "links": ["https://play.google.com/store/apps/details?id=com.meehelp.meehelp"],
-          "category": "mobile",
-          "client_name": " Find Helpers",
-          "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
-          "duration": "3 months",
-          "status": "Live",
-          "team_size": 4
-        },
-        {
-          "id": 5,
-          "img": Vaaree,
-          "title": "Vaaree",
-          "description": "Handpicked aesthetic collections - Choose the designs that reflect your style and personality.",
-          "more_description": "Welcome to Vaaree, where every corner is filled with warmth, style, and inspiration. We believe that home is more than just a place—it's a feeling. That's why we've curated a handpicked selection of high-quality products, sourced from certified sellers across India.",
-          "links": ["https://play.google.com/store/apps/details?id=com.coffye.gnvaib"],
-          "category": "mobile",
-          "client_name": "Varee job consultent",
-          "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
-          "duration": "3 months",
-          "status": "Live",
-          "team_size": 4
-        },
-        {
-          "id": 6,
-          "img": car,
-          "title": "Car Rental",
-          "description": "Savaari’s 24x7 Cab Booking Services",
-          "more_description": "Savaari is India’s premier car rental service, offering Safe & Reliable cabs in over 2000 cities. With 18 years of experience in the cab industry, Savaari is a trusted cab booking app for Outstation Cabs, Oneway drops, Local Hourly Rentals & Airport Car rentals.",
-          "links": ["https://play.google.com/store/apps/details?id=com.savaari.app"],
-          "category": "mobile",
-          "client_name": "Abhi Cars",
-          "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
-          "duration": "3 months",
-          "status": "Live",
-          "team_size": 4
-        },
-      ]
+export const categories = {
+  "E-Commerce": [
+    {
+      "id": 1,
+      "title": "Prime Pantry",
+      "description": "Multi-user e-commerce website for pantry items.",
+      "link": "https://plus.eshopweb.store/?store=prime-pantry",
+      "technologies_used": ["React", "Node.js", "Stripe API"],
+      "status": "Live",
+      "platform": "Web",
+      "image": primepantry // Add the corresponding image
     },
     {
-      "name": "E-Commerce Applications",
-      "data": [
-        {
-          "id": 1,
-          "img": sapid,
-          "title": "E-Commerce 1",
-          "description": "A modern e-commerce store.",
-          "more_description": "A fully responsive online store with advanced product filtering and checkout features.",
-          "links": ["https://play.google.com/store/apps/details?id=com.templecity.pujari&pcampaignid=web_share"],
-          "category": "e-commerce",
-          "client_name": "Sapid Ventures",
-          "technologies_used": ["React", "Node.js", "Stripe API"],
-          "duration": "6 months",
-          "status": "Live",
-          "team_size": 6
-        },
-        {
-          "id": 2,
-          "img": nudeal,
-          "title": "E-Commerce 2",
-          "description": "Seamless online shopping experience.",
-          "more_description": "A user-friendly e-commerce platform with AI-powered product recommendations.",
-          "links": ["https://play.google.com/store/apps/details?id=com.templecity.pujari&pcampaignid=web_share"],
-          "category": "e-commerce",
-          "client_name": "Nudeal Mart",
-          "technologies_used": ["Laravel", "Vue.js", "MySQL"],
-          "duration": "5 months",
-          "status": "Live",
-          "team_size": 4
-        },
-        {
-          "id": 3,
-          "img": nudeal,
-          "title": "E-Commerce 3",
-          "description": "Fashion e-commerce platform.",
-          "links": ["https://play.google.com/store/apps/details?id=com.templecity.pujari&pcampaignid=web_share"],
-          "more_description": "A marketplace for fashion brands with integrated social commerce features.",
-          "category": "e-commerce",
-          "client_name": "Nudeal Fashion",
-          "technologies_used": ["Shopify", "React", "GraphQL"],
-          "duration": "4 months",
-          "status": "In Development",
-          "team_size": 5
-        },
-        {
-          "id": 4,
-          "img": abhisreeweb,
-          "title": "Project 1",
-          "description": "A user-friendly mobile app for temple services and priest bookings.",
-          "more_description": "This app allows users to book puja services, find temple information, and get personalized religious guidance.",
-          "links": ["https://play.google.com/store/apps/details?id=com.templecity.pujari&pcampaignid=web_share"],
-          "category": "mobile",
-          "client_name": "Temple City",
-          "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
-          "duration": "3 months",
-          "status": "Live",
-          "team_size": 4
-        },
-        {
-          "id": 5,
-          "img": abhisreeweb,
-          "title": "Project 1",
-          "description": "A user-friendly mobile app for temple services and priest bookings.",
-          "more_description": "This app allows users to book puja services, find temple information, and get personalized religious guidance.",
-          "links": ["https://play.google.com/store/apps/details?id=com.templecity.pujari&pcampaignid=web_share"],
-          "category": "mobile",
-          "client_name": "Temple City",
-          "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
-          "duration": "3 months",
-          "status": "Live",
-          "team_size": 4
-        },
-        {
-          "id": 6,
-          "img": abhisreeweb,
-          "title": "Project 1",
-          "description": "A user-friendly mobile app for temple services and priest bookings.",
-          "more_description": "This app allows users to book puja services, find temple information, and get personalized religious guidance.",
-          "links": ["https://play.google.com/store/apps/details?id=com.templecity.pujari&pcampaignid=web_share"],
-          "category": "mobile",
-          "client_name": "Temple City",
-          "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
-          "duration": "3 months",
-          "status": "Live",
-          "team_size": 4
-        },
-      ]
+      "id": 2,
+      "title": "Eshop User App",
+      "description": "Android application for users to shop on the Eshop platform.",
+      "link": "https://play.google.com/store/apps/details?id=com.wrteam.eshop.pro",
+      "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
+      "status": "Live",
+      "platform": "Android",
+      "image": cashexbiteboxweb // Add the corresponding image
+    },
+    // {
+    //   "id": 3,
+    //   "title": "Eshop User iOS App",
+    //   "description": "iOS application for users to shop on the Eshop platform.",
+    //   "link": "https://testflight.apple.com/join/ZqKwNk27",
+    //   "technologies_used": ["Swift", "Firebase", "Google Maps API"],
+    //   "status": "Live",
+    //   "platform": "iOS",
+    //   "image": cashexweb // Add the corresponding image
+    // },
+    {
+      "id": 4,
+      "title": "Nudeal",
+      "description": "A fully integrated web-based shopping platform that offers advanced inventory and order management.",
+      "link": "https://nr12brandsshop.in/",
+      "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
+      "status": "Live",
+      "platform": "Web",
+      "image": nudealweb // Add the corresponding image
     },
     {
-      "name": "Food Delivery Websites",
-      "data": [
-        {
-          "id": 1,
-          "img": meatoweb,
-          "title": "Food Delivery 1",
-          "description": "Fast food delivery service.",
-          "more_description": "A hyperlocal delivery service that connects users to nearby restaurants in real-time.",
-          "links": ["https://play.google.com/store/apps/details?id=com.templecity.pujari&pcampaignid=web_share"],
-          "category": "food-delivery",
-          "client_name": "Meato Express",
-          "technologies_used": ["Next.js", "MongoDB", "Firebase"],
-          "duration": "5 months",
-          "status": "Live",
-          "team_size": 4
-        },
-        {
-          "id": 2,
-          "img": templecity,
-          "title": "Food Delivery 2",
-          "description": "Order from your favorite restaurants.",
-          "more_description": "A food ordering platform with AI-based meal suggestions and route optimization.",
-          "links": ["https://play.google.com/store/apps/details?id=com.templecity.pujari&pcampaignid=web_share"],
-          "category": "food-delivery",
-          "client_name": "Temple City Foods",
-          "technologies_used": ["Flutter", "Node.js", "PostgreSQL"],
-          "duration": "6 months",
-          "status": "In Development",
-          "team_size": 5
-        },
-        {
-          "id": 3,
-          "img": nudeal,
-          "title": "Food Delivery 3",
-          "description": "Pizza delivery at your doorstep.",
-          "more_description": "A feature-packed pizza delivery app with real-time tracking and quick reordering.",
-          "links": ["https://play.google.com/store/apps/details?id=com.templecity.pujari&pcampaignid=web_share"],
-          "category": "food-delivery",
-          "client_name": "Nudeal Eats",
-          "technologies_used": ["React Native", "Firebase", "Google Maps API"],
-          "duration": "4 months",
-          "status": "Live",
-          "team_size": 3
-        },
-        {
-          "id": 4,
-          "img": abhisreeweb,
-          "title": "Project 1",
-          "description": "A user-friendly mobile app for temple services and priest bookings.",
-          "more_description": "This app allows users to book puja services, find temple information, and get personalized religious guidance.",
-          "links": ["https://play.google.com/store/apps/details?id=com.templecity.pujari&pcampaignid=web_share"],
-          "category": "mobile",
-          "client_name": "Temple City",
-          "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
-          "duration": "3 months",
-          "status": "Live",
-          "team_size": 4
-        },
-        {
-          "id": 5,
-          "img": abhisreeweb,
-          "title": "Project 1",
-          "description": "A user-friendly mobile app for temple services and priest bookings.",
-          "more_description": "This app allows users to book puja services, find temple information, and get personalized religious guidance.",
-          "links": ["https://play.google.com/store/apps/details?id=com.templecity.pujari&pcampaignid=web_share"],
-          "category": "mobile",
-          "client_name": "Temple City",
-          "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
-          "duration": "3 months",
-          "status": "Live",
-          "team_size": 4
-        },
-        {
-          "id": 6,
-          "img": abhisreeweb,
-          "title": "Project 1",
-          "description": "A user-friendly mobile app for temple services and priest bookings.",
-          "more_description": "This app allows users to book puja services, find temple information, and get personalized religious guidance.",
-          "links": ["https://play.google.com/store/apps/details?id=com.templecity.pujari&pcampaignid=web_share"],
-          "category": "mobile",
-          "client_name": "Temple City",
-          "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
-          "duration": "3 months",
-          "status": "Live",
-          "team_size": 4
-        },
-      ]
+      "id": 5,
+      "title": "Nudeal App",
+      "description": "A fully functional mobile app designed to enhance user experience and productivity.",
+      "link": "https://play.google.com/store/apps/details?id=com.nudeal.user&pcampaignid=web_share",
+      "technologies_used": ["Flutter", "Firebase", "REST API"],
+      "status": "Live",
+      "platform": "Android",
+      "image": nudeal // Add the corresponding image
+    },
+    {
+      "id": 6,
+      "title": "Vaaree App",
+      "description": "Handpicked aesthetic collections for home and lifestyle.",
+      "link": "https://play.google.com/store/apps/details?id=com.coffye.gnvaib",
+      "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
+      "status": "Live",
+      "platform": "Android",
+      "image": Vaaree // Add the corresponding image
     }
-  
-];
+    ,
+    {
+      "id": 7,
+      "title": "Sapid App",
+      "description": "A modern e-commerce store.",
+      "link": "",
+      "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
+      "status": "In Progress",
+      "platform": "Android",
+      "image": sapid // Add the corresponding image
+    },
+    {
+      "id": 8,
+      "title": "BigBag",
+      "description": "An e-commerce platform for purchasing and managing bulk orders.",
+      "link": "https://bigbag.dokans.website/",
+      "technologies_used": ["React", "Node.js", "MongoDB"],
+      "status": "Live",
+      "platform": "Web",
+      "image": bigbagImage // Assign the imported image
+    },
+    {
+      "id": 8, // Unique ID for the project
+      "title": "Active Itzone Ecommerce Demo",
+      "description": "A demo e-commerce platform showcasing features for online shopping and store management.",
+      "link": "https://demo.activeitzone.com/ecommerce/",
+      "technologies_used": ["Laravel", "Vue.js", "MySQL"], // Update with actual technologies used
+      "status": "Live",
+      "platform": "Web",
+      "image": activeItzoneImage // Assign the imported image
+    }
 
-const Accordion= () => {
+  ],
+  "Food Delivery": [
+    {
+      "id": 1,
+      "title": "CashX BiteBox",
+      "description": "A modern web platform for online food ordering and restaurant management.",
+      "link": "https://biteboxes.in/",
+      "technologies_used": ["React", "Node.js", "MongoDB"],
+      "status": "In Development",
+      "platform": "Web",
+      "image": cashexbiteboxweb // Add the corresponding image
+    },
+    {
+      "id": 2,
+      "title": "MeatO",
+      "description": "An online food delivery service that connects users with local restaurants.",
+      "link": "https://meato.co/",
+      "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
+      "status": "Live",
+      "platform": "Web",
+      "image": meatoweb // Add the corresponding image
+    }
+  ],
+  "Job Search": [
+    {
+      "id": 1,
+      "title": "Workoasis",
+      "description": "A job search platform that bridges the gap between job seekers and employers.",
+      "link": "https://workoasis.in/",
+      "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
+      "status": "Live",
+      "platform": "Web",
+      "image": workoasisweb // Add the corresponding image
+    }
+  ],
+  "Financial": [
+    {
+      "id": 1,
+      "title": "CashX Web",
+      "description": "A fintech web application for managing digital payments and transactions.",
+      "link": "https://www.cashex.app/",
+      "technologies_used": ["Laravel", "Vue.js", "MySQL"],
+      "status": "Live",
+      "platform": "Web",
+      "image": cashexweb // Add the corresponding image
+    },
+    {
+      "id": 2,
+      "title": "Account & Expense Manager",
+      "description": "An app for managing and tracking expenses.",
+      "link": "https://play.google.com/store/apps/details?id=com.itwaves.accountmanager",
+      "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
+      "status": "Live",
+      "platform": "Android",
+      "image": help // Add the corresponding image
+    },
+    {
+      "id": 3,
+      "title": "ePayhub",
+      "description": "An app for paying credit card bills.",
+      "link": "https://play.google.com/store/apps/details?id=com.epayhub.mobile",
+      "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
+      "status": "Live",
+      "platform": "Android",
+      "image": help // Add the corresponding image
+    },
+    {
+      "id": 4,
+      "title": "Bullion",
+      "description": "A web application for tracking and managing bullion investments.",
+      "link": "https://bullion.bugfinder.app/",
+      "technologies_used": ["React", "Node.js", "MongoDB"],
+      "status": "Live",
+      "platform": "Web",
+      "image": bullionImage // Assign the imported image
+    }
+  ],
+  "Non-Profit": [
+    {
+      "id": 1,
+      "title": "Abhisree Foundation",
+      "description": "A non-profit organization website dedicated to supporting social causes and initiatives.",
+      "link": "https://abhisreefoundation.org/",
+      "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
+      "status": "Live",
+      "platform": "Web",
+      "image": abhisreeweb // Add the corresponding image
+    }
+  ],
+  "Wedding Planning": [
+    {
+      "id": 1,
+      "title": "WedMeGood App",
+      "description": "Wedding planning made simple with the WedMeGood App.",
+      "link": "https://play.google.com/store/apps/details?id=com.wedmegood.planner",
+      "technologies_used": ["Swift", "CoreData", "Firebase"],
+      "status": "Live",
+      "platform": "Android",
+      "image": wedding // Add the corresponding image
+    }
+  ],
+  "Car Rental": [
+    {
+      "id": 1,
+      "title": "Savaari App",
+      "description": "Savaari’s 24x7 Cab Booking Services for outstation and local travel.",
+      "link": "https://play.google.com/store/apps/details?id=com.savaari.app",
+      "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
+      "status": "Live",
+      "platform": "Android",
+      "image": car // Add the corresponding image
+    }
+  ],
+  "HR & Recruitment": [
+    {
+      "id": 1,
+      "title": "Find HR App",
+      "description": "An app for finding HR and recruitment services.",
+      "link": "https://play.google.com/store/apps/details?id=com.find.candidate",
+      "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
+      "status": "Live",
+      "platform": "Android",
+      "image": help // Add the corresponding image
+    }
+  ],
+  "Delivery": [
+    {
+      "id": 1,
+      "title": "Delivery Boy Login",
+      "description": "Web portal for delivery personnel to manage orders.",
+      "link": "https://eshop-pro.eshopweb.store/delivery_boy/login",
+      "technologies_used": ["React", "Node.js", "MongoDB"],
+      "status": "Live",
+      "platform": "Web",
+      "image": help // Add the corresponding image
+    },
+    {
+      "id": 2,
+      "title": "Delivery Boy iOS App",
+      "description": "iOS application for delivery personnel.",
+      "link": "https://testflight.apple.com/join/F7AstWFF",
+      "technologies_used": ["Swift", "Firebase", "Google Maps API"],
+      "status": "Live",
+      "platform": "iOS",
+      "image": help // Add the corresponding image
+    }
+  ],
+  "General Utilities": [
+    {
+      "id": 1,
+      "title": "MeeHelp App",
+      "description": "A user-friendly mobile app for finding helpers and services.",
+      "link": "https://play.google.com/store/apps/details?id=com.meehelp.meehelp",
+      "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
+      "status": "Live",
+      "platform": "Android",
+      "image": help // Add the corresponding image
+    },
+    {
+      "id": 2,
+      "title": "Temple City App",
+      "description": "An innovative Android application for temple services and priest bookings.",
+      "link": "https://play.google.com/store/apps/details?id=com.templecity.pujari&pcampaignid=web_share",
+      "technologies_used": ["Kotlin", "Node.js", "MongoDB"],
+      "status": "In Development",
+      "platform": "Android",
+      "image": templecity // Add the corresponding image
+    },
+    {
+      "id": 3,
+      "title": "Temple City Web",
+      "description": "An innovative web application for temple services and priest bookings.",
+      "link": "",
+      "technologies_used": ["Kotlin", "Node.js", "MongoDB"],
+      "status": "In Development",
+      "platform": "Android",
+      "image": templecityweb // Add the corresponding image
+    },
+
+  ]
+};
+const categoryIcons = {
+  "E-Commerce": faShoppingCart,
+  "Food Delivery": faUtensils,
+  "Job Search": faBriefcase,
+  "Financial": faCoins,
+  "Non-Profit": faHandHoldingHeart,
+  "Wedding Planning": faRing,
+  "Car Rental": faCarSide,
+  "HR & Recruitment": faUsers,
+  "Delivery": faTruck,
+  "General Utilities": faTools,
+};
+const Accordion = () => {
   const navigate = useNavigate();
+  const [visibleProjects,] = useState(3);
+
+  const handleViewAll = (category) => {
+    navigate(`/portfolio/${category}`, { state: { projects: categories[category], categoryName: category } });
+  };
 
   return (
-    <div className="project-items">
-      <h2 align="center">🚀 Our Projects</h2>
-
-      {categories.map((category, index) => (
-        <div key={index}>
-          <h3>{category.name}</h3>
-          <div className="project-container">
-            {category.data.slice(0,4).map((project) => (
+    <div className="portfolio-container">
+      {Object.keys(categories).map((category) => (
+        <div key={category} className="category-section">
+          <h2 className="category-header">
+            <span >
+              {category}
+            </span>
+            <FontAwesomeIcon icon={categoryIcons[category]} className="category-icon" />
+          </h2>
+          <div className="projects-grid">
+            {categories[category].slice(0, visibleProjects).map((project) => (
               <div key={project.id} className="project-card">
-                <img src={project.img} alt={project.title} className="project-img" />
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
+                <img src={project.image} alt={project.title} className="project-image" />
+                <div className="project-card-details">
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                  {/* <div className="technologies">
+                    {project.technologies_used.join(", ")}
+                  </div> */}
+                  {/* <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
+                    Visit Project
+                  </a> */}
+
+                </div>
               </div>
             ))}
           </div>
+          <button
+            className="view-all-button"
+            onClick={() => handleViewAll(category)}
+          >
+            View All
+          </button>
 
-          {/* "See More" Button - Navigates to New Page with Category Data */}
-          <div className="see-more-container">
-            <button
-              className="see-more-btn"
-              onClick={() =>  { navigate(`/projects/${category.name}`, { state: { projects: category.data } });document.body.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-            >
-              See More {category.name}
-            </button>
-          </div>
         </div>
       ))}
     </div>
