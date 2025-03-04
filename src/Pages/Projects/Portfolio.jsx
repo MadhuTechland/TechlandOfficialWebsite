@@ -13,7 +13,7 @@ import nudeal from '../../Components/Assets/Projectimg/nudeal.png'
 import meato from '../../Components/Assets/Projectimg/meato.png'
 import sapid from '../../Components/Assets/Projectimg/sapid.png'
 import templecity from '../../Components/Assets/Projectimg/templecity.png'
-import Accordian from './Accordian';
+import Accordion from './Accordion';
 
 const Portfolio = () => {
     const [counts, setCounts] = useState([0, 0, 0, 0]);
@@ -227,7 +227,7 @@ const Portfolio = () => {
 
 
             <div className="bg-gray-50 p-4">
-                <Accordian />
+            <Accordion />
             </div>
         </div>
     );
