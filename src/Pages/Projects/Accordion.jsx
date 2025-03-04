@@ -14,6 +14,10 @@ import nudeal from "../../Components/Assets/Projectimg/nudeal.png";
 import meato from "../../Components/Assets/Projectimg/meato.png";
 import sapid from "../../Components/Assets/Projectimg/sapid.png";
 import templecity from "../../Components/Assets/Projectimg/templecity.png";
+import wedding from "../../Components/Assets/wedding.jpg";
+import help from "../../Components/Assets/help.png";
+import car from "../../Components/Assets/Car Rental.png";
+import Vaaree from "../../Components/Assets/vaare.png";
 
 // Project Data for Different Categories
 const categories = [
@@ -139,27 +143,28 @@ const categories = [
         },
         {
           "id": 3,
-          "img": workoasisweb,
-          "title": "Mobile App 3",
-          "description": "An iOS app with a sleek UI.",
-          "more_description": "A visually stunning iOS app ensuring smooth performance and top-notch security.",
-          "links": ["https://play.google.com/store/apps/details?id=com.templecity.pujari&pcampaignid=web_share"],
+          "img": wedding,
+          "img": wedding,
+          "title": "Wedding planer",
+          "description": "Wedding planning made simple with the WedMeGood App",
+          "more_description": "Wedding planning made simple with the WedMeGood App",
+          "links": ["https://play.google.com/store/apps/details?id=com.wedmegood.planner"],
           "category": "mobile",
-          "client_name": "Work Oasis",
+          "client_name": "We plan your wed",
           "technologies_used": ["Swift", "CoreData", "Firebase"],
-          "duration": "6 months",
+          "duration": "2 months",
           "status": "Live",
           "team_size": 5
         },
         {
           "id": 4,
-          "img": abhisreeweb,
-          "title": "Project 1",
+          "img":help ,
+          "title": " Find Helpers",
           "description": "A user-friendly mobile app for temple services and priest bookings.",
           "more_description": "This app allows users to book puja services, find temple information, and get personalized religious guidance.",
-          "links": ["https://play.google.com/store/apps/details?id=com.templecity.pujari&pcampaignid=web_share"],
+          "links": ["https://play.google.com/store/apps/details?id=com.meehelp.meehelp"],
           "category": "mobile",
-          "client_name": "Temple City",
+          "client_name": " Find Helpers",
           "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
           "duration": "3 months",
           "status": "Live",
@@ -167,13 +172,13 @@ const categories = [
         },
         {
           "id": 5,
-          "img": abhisreeweb,
-          "title": "Project 1",
-          "description": "A user-friendly mobile app for temple services and priest bookings.",
-          "more_description": "This app allows users to book puja services, find temple information, and get personalized religious guidance.",
-          "links": ["https://play.google.com/store/apps/details?id=com.templecity.pujari&pcampaignid=web_share"],
+          "img": Vaaree,
+          "title": "Vaaree",
+          "description": "Handpicked aesthetic collections - Choose the designs that reflect your style and personality.",
+          "more_description": "Welcome to Vaaree, where every corner is filled with warmth, style, and inspiration. We believe that home is more than just a place—it's a feeling. That's why we've curated a handpicked selection of high-quality products, sourced from certified sellers across India.",
+          "links": ["https://play.google.com/store/apps/details?id=com.coffye.gnvaib"],
           "category": "mobile",
-          "client_name": "Temple City",
+          "client_name": "Varee job consultent",
           "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
           "duration": "3 months",
           "status": "Live",
@@ -181,13 +186,13 @@ const categories = [
         },
         {
           "id": 6,
-          "img": abhisreeweb,
-          "title": "Project 1",
-          "description": "A user-friendly mobile app for temple services and priest bookings.",
-          "more_description": "This app allows users to book puja services, find temple information, and get personalized religious guidance.",
-          "links": ["https://play.google.com/store/apps/details?id=com.templecity.pujari&pcampaignid=web_share"],
+          "img": car,
+          "title": "Car Rental",
+          "description": "Savaari’s 24x7 Cab Booking Services",
+          "more_description": "Savaari is India’s premier car rental service, offering Safe & Reliable cabs in over 2000 cities. With 18 years of experience in the cab industry, Savaari is a trusted cab booking app for Outstation Cabs, Oneway drops, Local Hourly Rentals & Airport Car rentals.",
+          "links": ["https://play.google.com/store/apps/details?id=com.savaari.app"],
           "category": "mobile",
-          "client_name": "Temple City",
+          "client_name": "Abhi Cars",
           "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
           "duration": "3 months",
           "status": "Live",
