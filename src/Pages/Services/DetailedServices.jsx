@@ -318,7 +318,7 @@ const DetailedServices = () => {
             <div className="detailservice-grid">
                 {servicesData.map((service, index) => (
                     <div
-                        key={index}
+                        key={service.title}
                         className="detailservice-card"
                         style={{ animationDelay: `${index * 100}ms` }}
                     >
@@ -332,7 +332,7 @@ const DetailedServices = () => {
                         </div>
                         <div className="detailservice-details">
                             {service.details.map((detail, idx) => (
-                                <div key={idx} className="detailservice-detail-item">
+                                <div key={detail.subTitle} className="detailservice-detail-item">
                                     <h3>{detail.subTitle}</h3>
                                     <p>{detail.subDescription}</p>
                                 </div>
@@ -344,7 +344,7 @@ const DetailedServices = () => {
                         <div className="workflow">
 
                             {service.workflow.map((step, stepIdx) => (
-                                <>
+                                <React.Fragment key={stepIdx}>
                                     <div
                                         className={`workflow-step  active`}
                                     >
@@ -360,7 +360,7 @@ const DetailedServices = () => {
                                             →
                                         </div>
                                     )}
-                                </>
+                                </React.Fragment>
                             ))}
                         </div>
                     </div>

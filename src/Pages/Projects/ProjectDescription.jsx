@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useLocation, useParams, Link } from "react-router-dom";
+import React, { } from "react";
+import { useLocation, useParams, } from "react-router-dom";
 import { ArrowLeft, Calendar, ExternalLink, } from "lucide-react";
 import "./ProjectDescription.css";
 import { categories } from "./Accordion";
@@ -8,9 +8,7 @@ import { categories } from "./Accordion";
 const ProjectDetail = () => {
   const location = useLocation();
   const param = useParams()
-  useEffect(() => {
-    document.body.scrollTo({ top: 0, behavior: "smooth" });
-  }, [])
+
   const project = location?.state?.project || categories?.[param.category].find(a => parseInt(a.id) === parseInt(param.id)) || {};
   const categoryName = location?.state?.categoryName || param?.category || {};
   // const { project, categoryName } = location.state || {};
@@ -20,9 +18,9 @@ const ProjectDetail = () => {
       <div className="project-not-found">
         <h2>Project Not Found</h2>
         <p>Sorry, the project you're looking for doesn't exist.</p>
-        <Link to="/" className="back-link">
+        <a href="/" className="back-link">
           <ArrowLeft size={16} /> Back to Projects
-        </Link>
+        </a>
       </div>
     );
   }
@@ -36,9 +34,9 @@ const ProjectDetail = () => {
   return (
     <div className="project-detail-container">
       <div className="project-detail-header">
-        <Link to={`/portfolio/${categoryName}`} className="back-button">
+        <a href={`/portfolio/${categoryName}`} className="back-button">
           <ArrowLeft size={20} /> Back to Projects
-        </Link>
+        </a>
         <h1 className="project-detail-title">{project.title}</h1>
         <p className="project-detail-date">
           <Calendar size={16} /> {formatDate(project.date)}

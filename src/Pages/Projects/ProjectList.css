@@ -130,6 +130,7 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.3s ease;
+  width: fit-content;
 }
 
 .view-all-button:hover {

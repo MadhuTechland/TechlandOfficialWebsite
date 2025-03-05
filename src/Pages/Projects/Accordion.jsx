@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import "./ProjectList.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -26,13 +26,17 @@ import nudeal from "../../Components/Assets/Projectimg/nudeal.png";
 import primepantry from "../../Components/Assets/Projectimg/primepantry.png";
 import sapid from "../../Components/Assets/Projectimg/sapid.png";
 import templecity from "../../Components/Assets/Projectimg/templecity.png";
-import wedding from "../../Components/Assets/wedding.jpg";
-import help from "../../Components/Assets/help.png";
-import car from "../../Components/Assets/Car Rental.png";
-import Vaaree from "../../Components/Assets/vaare.png";
-import bigbagImage from "../../Components/Assets/Projectimg/bigbagImage.png";
-import activeItzoneImage from "../../Components/Assets/Projectimg/activeItzoneImage.png";
-import bullionImage from "../../Components/Assets/Projectimg/bullionImage.png";
+import wedmegood from "../../Components/Assets/Projectimg/wedmegood.png";
+import accountexpensemanager from "../../Components/Assets/Projectimg/accountexpensemanager.png";
+import vaaree from "../../Components/Assets/Projectimg/vaaree.png";
+import bigbag from "../../Components/Assets/Projectimg/bigbagImage.png";
+import activeitzone from "../../Components/Assets/Projectimg/activeItzoneImage.png";
+import epayhub from "../../Components/Assets/Projectimg/epayhub.png";
+import bullion from "../../Components/Assets/Projectimg/bullionImage.png";
+import savaari from "../../Components/Assets/Projectimg/savaari.png";
+import findHR from "../../Components/Assets/Projectimg/findHR.png";
+import eshop from "../../Components/Assets/Projectimg/eshop.png";
+import meehelp from "../../Components/Assets/Projectimg/meehelp.png";
 
 // Project Data for Different Categories
 export const categories = {
@@ -55,7 +59,7 @@ export const categories = {
       "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
       "status": "Live",
       "platform": "Android",
-      "image": cashexbiteboxweb // Add the corresponding image
+      "image": eshop // Add the corresponding image
     },
     // {
     //   "id": 3,
@@ -95,7 +99,7 @@ export const categories = {
       "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
       "status": "Live",
       "platform": "Android",
-      "image": Vaaree // Add the corresponding image
+      "image": vaaree // Add the corresponding image
     }
     ,
     {
@@ -116,7 +120,7 @@ export const categories = {
       "technologies_used": ["React", "Node.js", "MongoDB"],
       "status": "Live",
       "platform": "Web",
-      "image": bigbagImage // Assign the imported image
+      "image": bigbag // Assign the imported image
     },
     {
       "id": 8, // Unique ID for the project
@@ -126,7 +130,7 @@ export const categories = {
       "technologies_used": ["Laravel", "Vue.js", "MySQL"], // Update with actual technologies used
       "status": "Live",
       "platform": "Web",
-      "image": activeItzoneImage // Assign the imported image
+      "image": activeitzone // Assign the imported image
     }
 
   ],
@@ -183,7 +187,7 @@ export const categories = {
       "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
       "status": "Live",
       "platform": "Android",
-      "image": help // Add the corresponding image
+      "image": accountexpensemanager
     },
     {
       "id": 3,
@@ -193,7 +197,7 @@ export const categories = {
       "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
       "status": "Live",
       "platform": "Android",
-      "image": help // Add the corresponding image
+      "image": epayhub // Add the corresponding image
     },
     {
       "id": 4,
@@ -203,7 +207,7 @@ export const categories = {
       "technologies_used": ["React", "Node.js", "MongoDB"],
       "status": "Live",
       "platform": "Web",
-      "image": bullionImage // Assign the imported image
+      "image": bullion // Assign the imported image
     }
   ],
   "Non-Profit": [
@@ -227,7 +231,7 @@ export const categories = {
       "technologies_used": ["Swift", "CoreData", "Firebase"],
       "status": "Live",
       "platform": "Android",
-      "image": wedding // Add the corresponding image
+      "image": wedmegood // Add the corresponding image
     }
   ],
   "Car Rental": [
@@ -239,7 +243,7 @@ export const categories = {
       "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
       "status": "Live",
       "platform": "Android",
-      "image": car // Add the corresponding image
+      "image": savaari // Add the corresponding image
     }
   ],
   "HR & Recruitment": [
@@ -251,7 +255,7 @@ export const categories = {
       "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
       "status": "Live",
       "platform": "Android",
-      "image": help // Add the corresponding image
+      "image": findHR // Add the corresponding image
     }
   ],
   "Delivery": [
@@ -263,7 +267,7 @@ export const categories = {
       "technologies_used": ["React", "Node.js", "MongoDB"],
       "status": "Live",
       "platform": "Web",
-      "image": help // Add the corresponding image
+      "image": eshop // Add the corresponding image
     },
     {
       "id": 2,
@@ -273,7 +277,7 @@ export const categories = {
       "technologies_used": ["Swift", "Firebase", "Google Maps API"],
       "status": "Live",
       "platform": "iOS",
-      "image": help // Add the corresponding image
+      "image": eshop // Add the corresponding image
     }
   ],
   "General Utilities": [
@@ -285,7 +289,7 @@ export const categories = {
       "technologies_used": ["Flutter", "Firebase", "Google Maps API"],
       "status": "Live",
       "platform": "Android",
-      "image": help // Add the corresponding image
+      "image": meehelp // Add the corresponding image
     },
     {
       "id": 2,
@@ -323,12 +327,12 @@ const categoryIcons = {
   "General Utilities": faTools,
 };
 const Accordion = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [visibleProjects,] = useState(3);
 
-  const handleViewAll = (category) => {
-    navigate(`/portfolio/${category}`, { state: { projects: categories[category], categoryName: category } });
-  };
+  // const handleViewAll = (category) => {
+  //   navigate(`/portfolio/${category}`, { state: { projects: categories[category], categoryName: category } });
+  // };
 
   return (
     <div className="portfolio-container">
@@ -358,12 +362,13 @@ const Accordion = () => {
               </div>
             ))}
           </div>
-          <button
+          <a
             className="view-all-button"
-            onClick={() => handleViewAll(category)}
+            href={`/portfolio/${category}`}
+          // onClick={() => handleViewAll(category)}
           >
             View All
-          </button>
+          </a>
 
         </div>
       ))}

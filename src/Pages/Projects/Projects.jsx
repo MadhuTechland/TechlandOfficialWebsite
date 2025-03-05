@@ -104,7 +104,7 @@ const Projects = () => {
                     ref={cardContainerRef}
                 >
                     {moblieProjects.map((client, index) => (
-                        <div key={index} className="home-project-card">
+                        <div key={client.name} className="home-project-card">
                             <img src={client.logo} alt={client.name} className="home-project-logo-moblie" />
                             <p className="home-project-name">{client.name}</p>
                             <div className="home-mobileBtn"></div>
@@ -128,7 +128,7 @@ const Projects = () => {
                     ref={testimonialContainerRef}
                 >
                     {pcProjects.map((client, index) => (
-                        <div key={index} className="home-project-card">
+                        <div key={client.name} className="home-project-card">
                             <img src={client.logo} alt={client.name} className="home-project-logo-pc" />
                             <p className="home-project-name">{client.name}</p>
                             <div className="home-pcStand"></div>

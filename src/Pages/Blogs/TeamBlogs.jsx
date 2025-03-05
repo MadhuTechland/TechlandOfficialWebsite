@@ -44,7 +44,7 @@ const TeamBlogs = () => {
                 <p className="blogs-subtitle">Check out the highlights from our recent team outings and vacations!</p>
                 <div className="blogs-grid">
                     {blogs.map((blog, index) => (
-                        <div key={index} className="blog-card">
+                        <div key={blog.title} className="blog-card">
                             <img src={blog.image} alt={blog.title} className="blog-image" />
                             <div className="blog-overlay">
                                 <h3>{blog.title}</h3>

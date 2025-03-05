@@ -80,7 +80,7 @@ const Contact = () => {
                             <div className="contact-item">
                                 <div className="contact-item__icon-box">
                                     <div className="contact-item__icon-circle">
-                                        <i class="fa-solid fa-phone"></i>
+                                        <i className="fa-solid fa-phone"></i>
                                     </div>
                                 </div>
                                 <div className="contact-item__details">
@@ -95,7 +95,7 @@ const Contact = () => {
                             <div className="contact-item">
                                 <div className="contact-item__icon-box">
                                     <div className="contact-item__icon-circle">
-                                        <i class="fa-solid fa-envelope"></i>
+                                        <i className="fa-solid fa-envelope"></i>
                                     </div>
                                 </div>
                                 <div className="contact-item__details">
@@ -110,7 +110,7 @@ const Contact = () => {
                             <div className="contact-item">
                                 <div className="contact-item__icon-box">
                                     <div className="contact-item__icon-circle">
-                                        <i class="fa-solid fa-location-dot"></i>                                            </div>
+                                        <i className="fa-solid fa-location-dot"></i>                                            </div>
                                 </div>
                                 <div className="contact-item__details">
                                     <h3 className="contact-item__title">Address</h3>

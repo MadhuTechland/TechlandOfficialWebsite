@@ -82,7 +82,7 @@ const Services = () => {
 				<div className="unique-card-container"
 					ref={cardContainerRef}>
 					{services.map((service, index) => (
-						<div key={index} className="unique-card"
+						<div key={service.title} className="unique-card"
 
 							onMouseEnter={() => cancelAnimationFrame(animationFrame.current)}
 							onMouseLeave={() => (animationFrame.current = requestAnimationFrame(scrollCards))}

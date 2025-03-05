@@ -1,32 +1,33 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "./ScrollToTopButton.css"; // CSS file for styling
 
 const ScrollToTopButton = () => {
+    const { pathname } = useLocation();
     const [isVisible, setIsVisible] = useState(false);
     const [scrollProgress, setScrollProgress] = useState(0);
+    useEffect(() => {
+        scrollToTop()
+    }, [pathname]);
 
     // Show button when scrolled down 300px
     useEffect(() => {
         const toggleVisibility = () => {
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            if (document.documentElement.scrollTop > 300 || document.documentElement.scrollTop > 300) {
                 setIsVisible(true);
             } else {
                 setIsVisible(false);
             }
-            const scrollTop = document.body.scrollTop; // Pixels scrolled from the top
+            const scrollTop = document.documentElement.scrollTop; // Pixels scrolled from the top
             const scrollHeight =
-                document.body.scrollHeight - window.innerHeight; // Total scrollable height
+                document.documentElement.scrollHeight - window.innerHeight; // Total scrollable height
             const scrollPercentage = (scrollTop / scrollHeight) * 100; // Scroll percentage
 
-            // Calculate scroll progress
-            // const scrollHeight = document.body.scrollHeight - document.body.clientHeight;
-            // const scrollPosition = document.body.scrollTop;
-            // const progress = (scrollPosition / scrollHeight) * 100;
             setScrollProgress(scrollPercentage);
         };
 
-        document.body.addEventListener("scroll", toggleVisibility);
-        return () => document.body.removeEventListener("scroll", toggleVisibility);
+        window.addEventListener("scroll", toggleVisibility);
+        return () => window.removeEventListener("scroll", toggleVisibility);
     }, []);
 
     // Scroll to top when clicked
@@ -35,10 +36,7 @@ const ScrollToTopButton = () => {
             top: 0,
             behavior: "smooth",
         });
-        document.body.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
+
     };
 
     return (

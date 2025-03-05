@@ -128,7 +128,7 @@ const Clients = () => {
 					ref={cardContainerRef}
 				>
 					{clients.map((client, index) => (
-						<div key={index} className="client-card">
+						<div key={client.name} className="client-card">
 							<img src={client.logo} alt={client.name} className="client-logo" />
 							<p className="client-name">{client.name}</p>
 						</div>
@@ -148,9 +148,9 @@ const Clients = () => {
 						ref={testimonialContainerRef}
 					>
 						{testimonials.map((testimonial, index) => (
-							<div className="testimonial-card">
+							<div key={testimonial.client} className="testimonial-card">
 								{/* <img src={person} alt="" /> */}
-								<div key={index}>
+								<div key={testimonial.client}>
 									<p className="testimonial-feedback">“{testimonial.feedback}”</p>
 									<p className="testimonial-client">- {testimonial.client}</p>
 								</div>

@@ -79,7 +79,7 @@ const Footer = () => {
 									<div className="socialcard" >
 										{
 											socialLinks.map((link, idx) => (
-												<a key={idx} href={link.href} aria-label={link.label} target='_blank' rel="noreferrer" className={`socialContainer container${idx}`}>
+												<a key={link.label} href={link.href} aria-label={link.label} target='_blank' rel="noreferrer" className={`socialContainer container${idx}`}>
 													{link.svg}
 												</a>
 											))

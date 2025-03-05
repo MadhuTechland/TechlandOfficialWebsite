@@ -1,16 +1,14 @@
-import React, { useEffect } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import React, { } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import './ProjectList.css';
 import { categories } from "./Accordion";
 
 
 const WebAllProjects = () => {
-  useEffect(() => {
-    document.body.scrollTo({ top: 0, behavior: "smooth" });
-  }, [])
+
   const location = useLocation();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const param = useParams()
 
   const projects = location?.state?.projects || categories?.[param.category] || {};
@@ -21,9 +19,9 @@ const WebAllProjects = () => {
     const options = { year: 'numeric', month: 'short' };
     return new Date(dateString).toLocaleDateString('en-US', options);
   };
-  const handleView = (project) => {
-    navigate(`/portfolio/${categoryName}/${project.id}`, { state: { project, categoryName }, });
-  };
+  // const handleView = (project) => {
+  //   navigate(`/portfolio/${categoryName}/${project.id}`, { state: { project, categoryName }, });
+  // };
   return (
     <div className="allproproject-gallery">
       <div className="allprogallery-header">
@@ -50,7 +48,7 @@ const WebAllProjects = () => {
 
               <div className="allprotech-tags">
                 {project.technologies_used.map((tech, index) => (
-                  <span key={index} className="allprotech-tag">
+                  <span key={tech} className="allprotech-tag">
                     {tech}
                   </span>
                 ))}
@@ -65,12 +63,13 @@ const WebAllProjects = () => {
                 >
                   View Project <ArrowUpRight size={16} />
                 </a>
-                <div
-                  onClick={() => handleView(project)}
+                <a
+                  href={`/portfolio/${categoryName}/${project.id}`}
+                  // onClick={() => handleView(project)}
                   className="allproview-project"
                 >
                   View Details <ArrowUpRight size={16} />
-                </div>
+                </a>
 
                 {project.date && (
                   <span className="allproproject-date">

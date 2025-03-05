@@ -52,7 +52,7 @@ const OurTeam = () => {
                 </p>
                 <div className="team-grid">
                     {team.map((member, index) => (
-                        <div key={index} className="team-card">
+                        <div key={member.name} className="team-card">
                             <img src={member.image} alt={member.name} className="team-image" />
                             <h3 className="team-name">{member.name}</h3>
                             <p className="team-role">{member.role}</p>

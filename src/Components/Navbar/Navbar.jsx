@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import logo from "../Assets/logo/image.png";
 import "./Navbar.css";
 import QuickContact from "../../Pages/Contact/QuickContact";
@@ -8,23 +8,24 @@ const Navbar = () => {
   const [showgetQuote, setShowgetQuote] = useState(false);
   const [scrolltoTop, setscrolltoTop] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation(); // Get the current path
 
   useEffect(() => {
     if (showgetQuote) {
-      window.scrollTo({ top: 0, behavior: "smooth" });;
-      document.body.scrollTo({ top: 0, behavior: "smooth" });
-      
-      document.body.style.overflow = "hidden";
-    } else document.body.style.overflow = "";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "";
+    }
 
-    return () => document.body.style.overflow = "";
+    return () => (document.documentElement.style.overflow = "");
   }, [showgetQuote]);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });;
-    document.body.scrollTo({ top: 0, behavior: "smooth" });
-    setIsMenuOpen(false)
+    setIsMenuOpen(false);
   }, [scrolltoTop]);
+
+  // Function to check if link is active
+  const getActiveClass = (path) => (location.pathname === path ? "nav-link active" : "nav-link");
 
   return (
     <>
@@ -32,50 +33,34 @@ const Navbar = () => {
       <header className="header">
         <div className="navbar-area">
           <nav className="navbarcontainer">
-            <NavLink className="navbar-brand" to="/">
+            <a className="navbar-brand" href="/">
               <img src={logo} alt="Logo" />
-            </NavLink>
+            </a>
 
-            <div className={`hamburger-icon ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(prev => !prev)}>
+            <div className={`hamburger-icon ${isMenuOpen ? "open" : ""}`} onClick={() => setIsMenuOpen((prev) => !prev)}>
               <span className="line"></span>
               <span className="line"></span>
               <span className="line"></span>
             </div>
 
-            <ul id="nav" className={`navbar-nav ms-auto ${isMenuOpen ? 'open' : ''}`}>
-              <li className="nav-item" onClick={() => setscrolltoTop(prev => !prev)}>
-                <NavLink className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")} to="/">
-                  Home 
-                </NavLink>
-              </li>
-              <li className="nav-item" onClick={() => setscrolltoTop(prev => !prev)}>
-                <NavLink className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")} to="/about">
-                  About us 
-                </NavLink>
-              </li>
-              <li className="nav-item" onClick={() => setscrolltoTop(prev => !prev)}>
-                <NavLink className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")} to="/services">
-                  Services
-                </NavLink>
-              </li>
-              <li className="nav-item" onClick={() => setscrolltoTop(prev => !prev)}>
-                <NavLink className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")} to="/portfolio">
-                  Portfolio
-                </NavLink>
-              </li>
-              <li className="nav-item" onClick={() => setscrolltoTop(prev => !prev)}>
-                <NavLink className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")} to="/team">
-                  Our Team
-                </NavLink>
-              </li>
-              <li className="nav-item" onClick={() => setscrolltoTop(prev => !prev)}>
-                <NavLink className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")} to="/contact">
-                  Contact Us
-                </NavLink>
-              </li>
+            <ul id="nav" className={`navbar-nav ms-auto ${isMenuOpen ? "open" : ""}`}>
+              {[
+                { path: "/", label: "Home" },
+                { path: "/about", label: "About Us" },
+                { path: "/services", label: "Services" },
+                { path: "/portfolio", label: "Portfolio" },
+                { path: "/team", label: "Our Team" },
+                { path: "/contact", label: "Contact Us" },
+              ].map((item) => (
+                <li className="nav-item" key={item.path} onClick={() => setscrolltoTop((prev) => !prev)}>
+                  <a href={item.path} className={getActiveClass(item.path)}>
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+
               <li>
                 <button
-                  href="#"
                   className="custom-button"
                   style={{ "--clr": "#7808d0" }}
                   onClick={() => setShowgetQuote(true)}
@@ -104,13 +89,11 @@ const Navbar = () => {
                 </button>
               </li>
             </ul>
-
           </nav>
           <div id="progressBar" className="progress-bar"></div>
-
         </div>
-
       </header>
+
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100">
         <defs>
           <linearGradient id="grad3" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -123,7 +106,7 @@ const Navbar = () => {
         <path d="M0 0v74.7C62 44 122.4 28.7 205 46c83.8 17.6 160.5 25.4 240-7 54-22 110-21 173-5 76.5 19.4 146.5 23.3 222 0 55-17 110.3-31.9 160-22.2V0H0Z" fill="url(#grad3)"></path>
       </svg>
 
-      {showgetQuote ? <QuickContact close={() => { if (showgetQuote) setShowgetQuote(false) }} /> : null}
+      {showgetQuote && <QuickContact close={() => setShowgetQuote(false)} />}
     </>
   );
 };
