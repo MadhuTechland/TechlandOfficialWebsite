@@ -1,5 +1,5 @@
 import React, { } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import './ProjectList.css';
 import { categories } from "./Accordion";
@@ -7,12 +7,12 @@ import { categories } from "./Accordion";
 
 const WebAllProjects = () => {
 
-  const location = useLocation();
+
   // const navigate = useNavigate();
   const param = useParams()
 
-  const projects = location?.state?.projects || categories?.[param.category] || {};
-  const categoryName = location?.state?.categoryName || param?.category || {};
+  const projects = categories?.[param.category] || {};
+  const categoryName = param?.category || {};
 
   // Function to format date
   const formatDate = (dateString) => {

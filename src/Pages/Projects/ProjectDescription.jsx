@@ -1,16 +1,15 @@
 import React, { } from "react";
-import { useLocation, useParams, } from "react-router-dom";
-import { ArrowLeft, Calendar, ExternalLink, } from "lucide-react";
+import { useParams, } from "react-router-dom";
+import { ArrowLeft, ExternalLink, } from "lucide-react";
 import "./ProjectDescription.css";
 import { categories } from "./Accordion";
 
 
 const ProjectDetail = () => {
-  const location = useLocation();
   const param = useParams()
 
-  const project = location?.state?.project || categories?.[param.category].find(a => parseInt(a.id) === parseInt(param.id)) || {};
-  const categoryName = location?.state?.categoryName || param?.category || {};
+  const project = categories?.[param.category].find(a => parseInt(a.id) === parseInt(param.id)) || {};
+  const categoryName = param?.category || {};
   // const { project, categoryName } = location.state || {};
 
   if (!project) {
@@ -26,10 +25,10 @@ const ProjectDetail = () => {
   }
 
   // Function to format date
-  const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('en-US', options);
-  };
+  // const formatDate = (dateString) => {
+  //   const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  //   return new Date(dateString).toLocaleDateString('en-US', options);
+  // };
 
   return (
     <div className="project-detail-container">
@@ -38,9 +37,9 @@ const ProjectDetail = () => {
           <ArrowLeft size={20} /> Back to Projects
         </a>
         <h1 className="project-detail-title">{project.title}</h1>
-        <p className="project-detail-date">
+        {/* <p className="project-detail-date">
           <Calendar size={16} /> {formatDate(project.date)}
-        </p>
+        </p> */}
       </div>
 
       <div className="project-detail-content">
@@ -59,38 +58,44 @@ const ProjectDetail = () => {
 
             {/* Extended description - this would come from the full project data */}
             <p className="project-detail-extended-description">
-              This project was developed to address specific challenges in the {project.title.toLowerCase()} domain.
+              {project.project_overview}
+              {/* This project was developed to address specific challenges in the {project.title.toLowerCase()} domain.
               It incorporates modern design principles and cutting-edge technologies to deliver a seamless user experience.
               The development process involved extensive research, prototyping, and iterative testing to ensure the final
-              product meets the highest standards of quality and performance.
+              product meets the highest standards of quality and performance. */}
             </p>
           </div>
 
           <div className="project-detail-features-section">
             <h2 className="section-title">Key Features</h2>
             <ul className="project-detail-features">
-              <li>Responsive design that works on all devices</li>
+              {project?.features?.map((a) =>
+                <li>{a}</li>
+              )}
+              {/* <li>Responsive design that works on all devices</li>
               <li>Intuitive user interface with modern aesthetics</li>
               <li>Optimized performance for fast loading times</li>
               <li>Comprehensive documentation for easy maintenance</li>
-              <li>Scalable architecture to accommodate future growth</li>
+              <li>Scalable architecture to accommodate future growth</li> */}
             </ul>
           </div>
 
           <div className="project-detail-challenges-section">
             <h2 className="section-title">Challenges & Solutions</h2>
-            <div className="challenge-solution">
-              <h3>Challenge 1</h3>
-              <p>
-                Implementing real-time updates while maintaining application performance.
-              </p>
-              <h3>Solution</h3>
-              <p>
-                Utilized WebSockets with an optimized data transfer protocol to minimize
-                payload size while ensuring timely updates.
-              </p>
-            </div>
-            <div className="challenge-solution">
+            {project?.challenges?.map((a, i) =>
+              <div className="challenge-solution">
+                <h3>Challenge {i + 1}</h3>
+                <p>
+                  {a.problem}
+                </p>
+                <h3>Solution</h3>
+                <p>
+                  {a.solution}
+                </p>
+              </div>
+            )}
+
+            {/* <div className="challenge-solution">
               <h3>Challenge 2</h3>
               <p>
                 Ensuring consistent user experience across different browsers and devices.
@@ -100,7 +105,7 @@ const ProjectDetail = () => {
                 Implemented a comprehensive testing strategy using cross-browser testing
                 tools and device emulators to identify and address compatibility issues.
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -117,7 +122,7 @@ const ProjectDetail = () => {
           </div>
 
           <div className="project-detail-links-section">
-            <h2 className="section-title">Project Links</h2>
+            <h2 className="section-title">Project Link</h2>
             <div className="project-detail-links">
               <a
                 href={project.link}
@@ -134,13 +139,17 @@ const ProjectDetail = () => {
           <div className="project-detail-timeline-section">
             <h2 className="section-title">Project Timeline</h2>
             <div className="project-timeline">
-              <div className="timeline-item">
-                <div className="timeline-dot"></div>
-                <div className="timeline-content">
-                  <h3>Planning & Research</h3>
-                  <p>2 weeks</p>
+              {Object.keys(project?.timeline)?.map((a) =>
+                <div className="timeline-item">
+                  <div className="timeline-dot"></div>
+                  <div className="timeline-content">
+                    <h3>{a}</h3>
+                    <p>{project?.timeline[a]}</p>
+                  </div>
                 </div>
-              </div>
+              )}
+
+              {/* 
               <div className="timeline-item">
                 <div className="timeline-dot"></div>
                 <div className="timeline-content">
@@ -168,7 +177,7 @@ const ProjectDetail = () => {
                   <h3>Deployment</h3>
                   <p>1 week</p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
