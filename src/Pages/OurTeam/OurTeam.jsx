@@ -1,6 +1,6 @@
 import React from "react";
 import "./OurTeam.css";
-import personImg2 from '../../Components/Assets/Personimg/varaprasadimg.png'
+// import personImg2 from '../../Components/Assets/Personimg/varaprasadimg.png'
 import personImg from '../../Components/Assets/Personimg/madhuimg.png'
 
 const OurTeam = () => {
@@ -14,33 +14,16 @@ const OurTeam = () => {
 
             },
         },
-        {
-            name: "Vara Prasad",
-            role: "Managing Director",
-            image: personImg2,
-            social: {
-                linkedin: "https://www.linkedin.com/company/techland-it-solutions/",
+        // {
+        //     name: "Vara Prasad",
+        //     role: "Managing Director",
+        //     image: personImg2,
+        //     social: {
+        //         linkedin: "https://www.linkedin.com/company/techland-it-solutions/",
 
-            },
-        },
-        // {
-        //     name: "Michael Johnson",
-        //     role: "Lead Developer",
-        //     image: personImg,
-        //     social: {
-        //         linkedin: "https://linkedin.com/in/michaeljohnson",
-        //         twitter: "https://twitter.com/michaeljohnson",
         //     },
         // },
-        // {
-        //     name: "Emily Davis",
-        //     role: "UI/UX Designer",
-        //     image: personImg,
-        //     social: {
-        //         linkedin: "https://linkedin.com/in/emilydavis",
-        //         twitter: "https://twitter.com/emilydavis",
-        //     },
-        // },
+
     ];
 
     return (
