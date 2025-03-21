@@ -75,8 +75,9 @@ const Portfolio = () => {
     return (
         <div className="main-container">
             <div className="header-section">
-                <h1>Our Work Portfolio</h1>
-                <p>We create beautiful digital experiences that help businesses grow and succeed in the modern world.</p>
+                <h1>Portfolio | Successful Projects in Web & App Development</h1>
+                <p>View our portfolio showcasing successful digital marketing, web development, and app
+                development projects delivered in Hyderabad.</p>
             </div>
 
             <Accordion />

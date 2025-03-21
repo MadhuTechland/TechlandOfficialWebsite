@@ -29,9 +29,10 @@ const OurTeam = () => {
     return (
         <section className="team-section">
             <div className="team-container">
-                <h2 className="team-title">Our Team</h2>
+                <h2 className="team-title">Meet Our Team | Expert Developers & Marketers in Hyderabad</h2>
                 <p className="team-subtitle">
-                    Meet the talented individuals who make Techland IT Solutions a success.
+                    Discover the skilled team behind Techland IT Solutions, delivering top-tier digital
+                    marketing, web development, and app development services in Hyderabad.
                 </p>
                 <div className="team-grid">
                     {team.map((member, index) => (

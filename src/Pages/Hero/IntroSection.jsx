@@ -20,11 +20,10 @@ const IntroSection = () => {
 			<section className="intro-section">
 				<div className="intro-container">
 					<div className="intro-content">
-						<h1 className="intro-title">Transforming Ideas into Digital Excellence</h1>
+						<h1 className="intro-title">Digital Marketing & Web Development in Hyderabad | Techland IT</h1>
 						<p className="intro-description">
-							Empowering businesses with cutting-edge technology solutions in
-							App Development, Flutter Development, Digital Marketing, UI/UX Design, Web
-							Development, and E-Commerce Solutions
+							Techland IT Solutions offers top-notch digital marketing, web development,
+							e-commerce, app development, and UI/UX services in Hyderabad.
 						</p>
 						{/* <ul className="intro-services">
 							<li>✔ Mobile App Development</li>

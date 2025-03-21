@@ -56,9 +56,10 @@ const Contact = () => {
     return (
         <>
             <div className='contact-title-header'>
-                <h1 className="contact-title">Ready to Start Your Digital Journey?</h1>
+                <h1 className="contact-title">Contact Techland IT Solutions | Hyderabad IT Services</h1>
                 <p className="contact-content">
-                    We’d love to hear from you! Whether you have inquiries about our services or need a tailored solution for your business, our team is here to help. Reach out to us today, and let’s discuss how we can drive your business forward with innovative and scalable technology solutions.
+                    Get in touch with Techland IT Solutions for expert digital marketing, web development,
+                    and app development services in Hyderabad.
                 </p>
             </div>
             {/* Custom Alert */}

@@ -74,9 +74,10 @@ const Services = () => {
 	return (
 		<section className="services-section">
 			<div className="services-container">
-				<h2 className="services-title">Our Services</h2>
+				<h2 className="services-title">Our Services | Digital Marketing, Web & App Development Hyderabad</h2>
 				<span className="services-subtitle">
-					At Techland IT Solutions, we offer a wide range of services to help your business thrive in the digital world.
+					Explore our services: digital marketing, web development, e-commerce solutions, Flutter
+					app development, and UI/UX design in Hyderabad.
 				</span>
 
 				<div className="unique-card-container"

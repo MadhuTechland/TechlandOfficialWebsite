@@ -10,13 +10,11 @@ const AboutUs = () => {
             <section className="aboutintro">
                 <article>
                     <header className="about-header">
-                        <h1>Who We Are?</h1>
+                        <h1>About Techland IT Solutions | Leading IT Services in Hyderabad</h1>
                         <p>
-                            Techland IT Solutions is a forward-thinking technology company dedicated to
-                            delivering innovative digital solutions. From app development to e-commerce platforms,
-                            we empower businesses with tools to thrive in a digital-rst world. Our team of skilled
-                            professionals combines creativity, technical expertise, and a client-rst mindset to craft
-                            solutions tailored to your unique needs
+                            Learn about Techland IT Solutions, a premier provider of digital marketing, web
+                            development, and app development services in Hyderabad.
+
                         </p>
                     </header>
                 </article>
